@@ -1,9 +1,8 @@
-name:                SemiRing
+name:                ProbDist
 version:             0.1
-synopsis:            A type class for semirings and some basic implementations
-description:         This provides a type class for semi-rings and some trivial 
-                     implementations of common semi-rings for natural language 
-                     applications.
+synopsis:            Tools for dealing with probability distribution for NLP
+description:         This provides some tools for using probability distributions 
+                     particularly for conditioning, estimation (EM, MLE), and smoothing
 category:            Natural Language Processing
 license:             BSD3
 license-file:        LICENSE
@@ -17,38 +16,28 @@ flag testing
     default: False
 
 library
-    exposed-modules:     NLP.SemiRing
-                         NLP.SemiRing.Boolean
-                         NLP.SemiRing.Prob
-                         NLP.SemiRing.Viterbi
-                         NLP.SemiRing.ViterbiNBest
-                         NLP.SemiRing.Counting
-                         NLP.SemiRing.Derivation
-                         NLP.SemiRing.ViterbiNBestDerivation
+    exposed-modules:     NLP.Probability.Dist
 
     if flag(testing)
         buildable: False
 
     build-Depends:   base       >= 3   && < 4,
                      containers >= 0.1 && < 0.3,
-                     monoids    >= 0.2.0.2 && < 0.3,
-                     Boolean
+                     monoids    >= 0.2.0.2 && < 0.3
 
 executable hstestsemi
-    main-is:            Tests.hs
+    main-is:         Tests.hs
     hs-source-dirs: . tests/
 
     build-Depends:   base       >= 3   && < 4,
                      containers >= 0.1 && < 0.3,
                      monoids    >= 0.2.0.2 && < 0.3,
-                     Boolean,
                      QuickCheck >= 2,
                      HUnit,
                      test-framework,
                      test-framework-hunit,
                      test-framework-quickcheck2
                     
-                     
     if !flag(testing)
         buildable: False
                   
