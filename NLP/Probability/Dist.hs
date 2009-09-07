@@ -1,2 +1,2 @@
-module Dist where 
+module NLP.Probability.Dist where 
 
