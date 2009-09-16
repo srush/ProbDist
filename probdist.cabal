@@ -1,6 +1,6 @@
-name:                ProbDist
+name:                probdist
 version:             0.1
-synopsis:            Tools for dealing with probability distribution for NLP
+synopsis:            Tools for dealing with probability distributions for machine learning
 description:         This provides some tools for using probability distributions 
                      particularly for conditioning, estimation (EM, MLE), and smoothing
 category:            Natural Language Processing
@@ -16,7 +16,10 @@ flag testing
     default: False
 
 library
-    exposed-modules:     NLP.Probability.Dist
+    exposed-modules:     NLP.Probability.Distribution
+                         NLP.Probability.Observation     
+                         NLP.Probability.ConditionalDistribution     
+                         NLP.Probability.Trie     
 
     if flag(testing)
         buildable: False
@@ -25,7 +28,7 @@ library
                      containers >= 0.1 && < 0.3,
                      monoids    >= 0.2.0.2 && < 0.3
 
-executable hstestsemi
+executable hstestprobdist
     main-is:         Tests.hs
     hs-source-dirs: . tests/
 
